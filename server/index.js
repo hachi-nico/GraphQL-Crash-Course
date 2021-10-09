@@ -1,30 +1,39 @@
 const { ApolloServer, gql } = require('apollo-server');
+const { animals, categories, mainCards } = require('./mockData');
 
 const typeDefs = gql`
-  type Book {
-    title: String
-    author: String
+  type MainCard {
+    title: String!
+    image: String!
+  }
+
+  type Animal {
+    id: ID!
+    image: String!
+    title: String!
+    rating: Float
+    price: String!
+    slug: String!
+    stock: Int!
+    onSale: Boolean
+    description: [String!]!
   }
 
   type Query {
-    books: [Book]
+    mainCards: [MainCard]
+    animals: [Animal]
+    animal(slug: String!): Animal
   }
 `;
 
-const books = [
-  {
-    title: 'The Awakening',
-    author: 'Kate Chopin',
-  },
-  {
-    title: 'City of Glass',
-    author: 'Paul Auster',
-  },
-];
-
 const resolvers = {
   Query: {
-    books: () => books,
+    mainCards: () => mainCards,
+    animals: () => animals,
+    animal: (parent, args, ctx) => {
+      let animal = animals.find((a) => a.slug === args.slug);
+      return animal;
+    },
   },
 };
 
