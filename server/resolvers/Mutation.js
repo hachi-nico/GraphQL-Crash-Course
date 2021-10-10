@@ -1,24 +1,17 @@
 const { nanoid } = require('nanoid');
 
 module.exports = {
-  addAnimal: (
-    parent,
-    { image, title, rating, price, slug, stock, onSale, description, category },
-    { animals }
-  ) => {
+  addAnimal: (parent, args, { animals }) => {
     let newAnimal = {
       id: nanoid(8),
-      image,
-      title,
-      rating,
-      price,
-      slug,
-      stock,
-      onSale,
-      description,
-      category,
+      ...args,
     };
     animals.push(newAnimal);
     return newAnimal;
+  },
+  removeAnimal: (parent, { id }, { animals }) => {
+    let index = animals.findIndex((a) => a.id === id);
+    animals.splice(index, 1);
+    return true;
   },
 };

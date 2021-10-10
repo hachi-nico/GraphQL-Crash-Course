@@ -47,5 +47,6 @@ module.exports = gql`
       description: [String!]!
       category: String!
     ): Animal
+    removeAnimal(id: ID!): Boolean!
   }
 `;
