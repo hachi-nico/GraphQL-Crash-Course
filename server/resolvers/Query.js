@@ -1,9 +1,9 @@
 module.exports = {
-  mainCards: () => mainCards,
-  animals: () => animals,
+  mainCards: (parent, args, { mainCards }) => mainCards,
+  animals: (parent, args, { animals }) => animals,
   animal: (parent, args, { animals }) =>
     animals.find((a) => a.slug === args.slug),
-  categories: () => categories,
+  categories: (parent, args, { categories }) => categories,
   category: (parent, args, { categories }) =>
     categories.find((c) => c.slug === args.slug),
 };

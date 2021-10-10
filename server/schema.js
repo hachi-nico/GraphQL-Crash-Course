@@ -34,4 +34,18 @@ module.exports = gql`
     categories: [Category!]!
     category(slug: String!): Category
   }
+
+  type Mutation {
+    addAnimal(
+      image: String!
+      title: String!
+      rating: Float
+      price: String!
+      slug: String!
+      stock: Int!
+      onSale: Boolean
+      description: [String!]!
+      category: String!
+    ): Animal
+  }
 `;
