@@ -1,6 +1,4 @@
-const { categories } = require('../mockData');
-
 module.exports = {
-  category: (parent, args, ctx) =>
+  category: (parent, args, { categories }) =>
     categories.find((c) => c.id === parent.category),
 };

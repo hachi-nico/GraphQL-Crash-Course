@@ -1,6 +1,4 @@
-const { animals } = require('../mockData');
-
 module.exports = {
-  animals: (parent, args, ctx) =>
+  animals: (parent, args, { animals }) =>
     animals.filter((a) => a.category === parent.id),
 };
