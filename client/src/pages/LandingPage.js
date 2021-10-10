@@ -8,6 +8,7 @@ const FETCH_ANIMAL_CARDS = gql`
   {
     animals {
       image
+      title
       id
       price
       slug
